@@ -1,34 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Home - Profile</title>
+    <link rel="stylesheet" th:href="@{/static.css/style.css}">
 </head>
-<body>
+<body style="background-color: #fff0f5; font-family: 'Segoe UI', sans-serif; padding: 50px; text-align: center;">
 
-<h2>MY Website NIM_KAMU</h2>
+<div style="background: white; padding: 40px; border-radius: 25px; display: inline-block; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 3px solid #ff69b4; min-width: 400px;">
 
-<p>Selamat datang di aplikasi!</p>
+    <div style="margin-bottom: 20px;">
+        <img th:src="@{/static.css/fera.jpeg}"
+             width="180" height="180"
+             style="border-radius: 50%; object-fit: cover; border: 6px solid #ff69b4; background-color: #eee;"
+             alt="Foto Profil Fera">
+    </div>
 
-<a href="/form">+ Input Data Mahasiswa</a>
+    <h2 th:text="${nama}" style="color: #ff1493; margin-bottom: 5px; font-size: 28px;">Fera Istanti</h2>
 
-<h3>Data Mahasiswa</h3>
+    <p style="font-style: italic; color: #666; margin-bottom: 25px; font-size: 18px;">
+        "<span th:text="${kataKata}">Semangat belajar Web Development dan Docker!</span>"
+    </p>
 
-<table>
-    <tr>
-        <th>No</th>
-        <th>Nama</th>
-        <th>NIM</th>
-        <th>Jenis Kelamin</th>
-    </tr>
+    <hr style="border: 1px solid #ffc0cb; margin-bottom: 20px;">
 
-    <tr>
-        <td colspan="4">Belum ada data</td>
-    </tr>
-</table>
+    <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; border-radius: 10px; overflow: hidden;">
+        <tr style="background-color: #ff69b4; color: white;">
+            <th style="padding: 10px;">NIM</th>
+            <th style="padding: 10px;">Jenis Kelamin</th>
+        </tr>
+        <tr style="background-color: #fff5f7;">
+            <td style="padding: 10px; border: 1px solid #ffc0cb;" th:text="${nim}">20230140083</td>
+            <td style="padding: 10px; border: 1px solid #ffc0cb;" th:text="${jk}">Perempuan</td>
+        </tr>
+    </table>
 
-<br>
-<a href="/">Logout</a>
+    <a href="/" style="color: #ff69b4; text-decoration: none; font-weight: bold; font-size: 14px;">Logout</a>
+</div>
 
 </body>
 </html>

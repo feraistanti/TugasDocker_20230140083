@@ -1,5 +1,6 @@
 package com.tugas.deploy.controller;
 
+import com.tugas.deploy.model.UserModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +14,8 @@ public class WebController {
     }
 
     @PostMapping("/login")
-    public String login(@RequestParam String username,
-                        @RequestParam String password) {
-
+    public String login(@RequestParam String username, @RequestParam String password) {
+        // Login menggunakan NIM kamu
         if(username.equals("admin") && password.equals("20230140083")) {
             return "redirect:/home";
         }
@@ -23,25 +23,14 @@ public class WebController {
     }
 
     @GetMapping("/home")
-    public String home() {
+    public String home(Model model) {
+        // Kuncinya di sini: Data langsung dimasukkan secara default
+        model.addAttribute("nama", "Fera Istanti");
+        model.addAttribute("nim", "20230140083");
+        model.addAttribute("jk", "Perempuan");
+        model.addAttribute("foto", "fera.jpeg"); // Pastikan file ini ada di resources/static.css/
+        model.addAttribute("kataKata", "when ya fer");
+
         return "home";
-    }
-
-    @GetMapping("/form")
-    public String form() {
-        return "form";
-    }
-
-    @PostMapping("/submit")
-    public String submit(@RequestParam String nama,
-                         @RequestParam String nim,
-                         @RequestParam String jk,
-                         Model model) {
-
-        model.addAttribute("nama", nama);
-        model.addAttribute("nim", nim);
-        model.addAttribute("jk", jk);
-
-        return "result";
     }
 }
